@@ -21,8 +21,9 @@
   
   p {
     margin: 5px 0;
-    color: #555;
-    font-size: 18px;
+    color: #190202;
+    font-size: 30px;
+    font-style: bold;
   }
   
   .status {
@@ -97,3 +98,38 @@
     }
   }
   
+
+  .link{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #ff0000;
+    background-color: #e9dfdf;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+  
+  .link:hover {
+    background-color: #ffe6e6;
+  }
+
+  
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
