@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation,Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import './Game.css';
 
 const Game = () => {
@@ -30,50 +30,46 @@ const Game = () => {
       [0, 4, 8],
       [2, 4, 6],
     ];
-    let flag = true;
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
-    
     }
-   
     return null;
   };
 
   const winner = calculateWinner(board);
-  let status = ""
-  if(winner===null){
+  let status = "";
+  if (winner === null) {
     status = `Next player: ${xIsNext ? 'X' : 'O'}`;
-  }else if(winner ==="Draw"){
-    status = 'Match Draw'
-  }else{
-    status = `Winner: ${winner}`
+  } else if (winner === "Draw") {
+    status = 'Match Draw';
+  } else {
+    status = `Winner: ${winner}`;
   }
-  // const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
   const renderSquare = (index) => (
     <button className="square" onClick={() => handleClick(index)}>
       {board[index]}
     </button>
   );
-  const refresh = ()=>{
+
+  const refresh = () => {
     setBoard(Array(9).fill(null));
-    return
-  }
+  };
 
   return (
     <div className="game-container">
       <h2>Tic Tac Toe</h2>
       <Link to={'/'} className='link'>Exit</Link>
-      <p>{`Player 1: ${player1} (X)`}</p>
-      <p>{`Player 2: ${player2} (O)`}</p>
+      <p className="player"><span role="img" aria-label="Player 1">👤</span> {`Player 1: ${player1} (X)`}</p>
+      <p className="player"><span role="img" aria-label="Player 2">👥</span> {`Player 2: ${player2} (O)`}</p>
       <div className="status">{status}</div>
       <div className="board">
         {board.map((square, index) => renderSquare(index))}
       </div>
-      <button type='submit' onClick={refresh}>restart</button>
+      <button type='button' onClick={refresh}>Restart</button>
     </div>
   );
 };
