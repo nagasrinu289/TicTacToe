@@ -64,7 +64,7 @@ const Game = () => {
       <h2>Tic Tac Toe</h2>
       <Link to={'/'} className='link'>Exit</Link>
       <p className="player"><span role="img" aria-label="Player 1">👤</span> {`Player 1: ${player1} (X)`}</p>
-      <p className="player"><span role="img" aria-label="Player 2">👥</span> {`Player 2: ${player2} (O)`}</p>
+      <p className="player"><span role="img" aria-label="Player 2">👤</span> {`Player 2: ${player2} (O)`}</p>
       <div className="status">{status}</div>
       <div className="board">
         {board.map((square, index) => renderSquare(index))}
