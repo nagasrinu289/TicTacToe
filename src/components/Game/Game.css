@@ -151,3 +151,11 @@ button:hover {
       font-size: 24px;
   }
 }
+
+.winner{
+  background-color: orangered;
+  border-radius: 5px;
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+}
