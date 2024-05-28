@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import './online/onlinegame.css'
+import './onlinegame.css'
 
-const Game = () => {
-  const location = useLocation();
-  const { player1, player2 } = location.state || { player1: '', player2: '' };
-
+const OnlineGame = ({playerName,opponentName,playingAs}) => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
   const [winner, setWinner] = useState(null);
+  const [turn,setTurn] = useState(playingAs==='cross'?true:false);
+  
 
   const handleClick = (index) => {
     if (board[index] || winner) {
@@ -53,12 +52,16 @@ const Game = () => {
   useEffect(() => {
     const winner = calculateWinner(board);
     if (winner) {
-      setWinner(winner);
+      if((winner==='X' && playingAs==='cross') || (winner==='O' && playingAs==='circle')){
+        setWinner("You won the game!")
+      }else{
+        setWinner("Opponent won the game")
+      }
     }
   }, [board]);
 
   const status = winner!=="draw"
-    ? `Winner is ${winner==='X'?`${player1}`:`${player2}`}`
+    ? `Winner is ${winner}`
     : "It's a draw";
 
   const renderSquare = (index) => (
@@ -66,7 +69,7 @@ const Game = () => {
       {board[index]}
     </button>
   );
-
+ 
   const refresh = () => {
     setBoard(Array(9).fill(null));
     setXIsNext(true);
@@ -74,31 +77,38 @@ const Game = () => {
   };
   
   useEffect(() => {
-    if (xIsNext) {
-      document.getElementById('left').style.backgroundColor = 'red';
-      document.getElementById('right').style.backgroundColor = 'transparent';
-    } else {
-      document.getElementById('left').style.backgroundColor = 'transparent';
-      document.getElementById('right').style.backgroundColor = 'red'; 
+    if((xIsNext && playingAs==='cross') || (!xIsNext && playingAs==="circle")){
+      setTurn(true);
+    }else{
+      setTurn(false)
     }
+    // if (turn) {
+    //   document.getElementById('left').style.backgroundColor = 'red';
+    //   document.getElementById('right').style.backgroundColor = 'grey';
+    // }else {
+    //   document.getElementById('left').style.backgroundColor = 'grey';
+    //   document.getElementById('right').style.backgroundColor = 'red'; 
+    // }
   }, [xIsNext]);
 
 
   return (
     <div className="game-container">
       <h2>Tic Tac Toe</h2>
+      {!winner && <h3>You are playing against {opponentName}</h3>}
       <Link to={'/'} className='link'>Exit</Link>
       <div className='move-detection'>
-      <div className='left' id='left'>{player1}</div>
-      <div className='right' id='right'>{player2}</div>
+      <div className={`player ${turn ? 'current' : 'notcurrent'}`} >{playerName}</div>
+      <div className={`player ${!turn ? 'current' : 'notcurrent'}`} >{opponentName}</div>
       </div>
-      {winner && <div className='g-status'>{status}</div>}
+      {winner && <div className='g-status'>{winner}</div>}
+      
       <div className="board">
         {board.map((square, index) => renderSquare(index))}
       </div>
-      <button className='btn-restart' type='button' onClick={refresh}>Restart</button>
+      <button type='button' onClick={refresh}>Restart</button>
     </div>
   );
 };
 
-export default Game;
+export default OnlineGame;

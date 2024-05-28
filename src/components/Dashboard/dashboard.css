@@ -1,0 +1,58 @@
+/* dashboard.css */
+.dashboardcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    height: 100vh;
+    background-color: #f0f0f0; /* Light grey background */
+    padding: 20px; /* Add padding to avoid content touching the edges */
+    box-sizing: border-box;
+  }
+  
+  .Box {
+    background-color: whitesmoke; /* White background for cards */
+    color: rgb(23, 21, 21);
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 20px; /* Space between cards */
+    padding: 20px; /* Padding inside the card */
+    text-align: center; /* Center text inside the card */
+    width: calc(33% - 40px); /* Responsive width for cards, accounting for margin */
+    transition: transform 0.2s; /* Animation for hover effect */
+  }
+  
+  .Box:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+  }
+  
+  .Box a {
+    text-decoration: none; /* Remove underline from links */
+    color: #020101; /* Dark grey text color */
+    font-size: 18px; /* Larger font size */
+    font-weight: bold; /* Bold text */
+  }
+  
+  .Box a:hover {
+    color: #007BFF; /* Blue color on hover */
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .Box {
+      width: calc(50% - 40px); /* Adjust width for medium screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Box {
+      width: calc(100% - 40px); /* Adjust width for small screens */
+      margin: 10px; /* Reduce margin for small screens */
+    }
+  
+    .Box a {
+      font-size: 16px; /* Adjust font size for small screens */
+    }
+  }
+  

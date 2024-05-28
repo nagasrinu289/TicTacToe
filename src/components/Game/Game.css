@@ -4,10 +4,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  /* padding: 20px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin: 20px;
+  /* margin: 20px; */
   width: 100%;
   max-width: 600px;
   background-color: #fff;
@@ -75,7 +75,7 @@ p {
   background-color: #ffe6e6;
 }
 
-button {
+.btn-restart {
   padding: 10px 20px;
   font-size: 18px;
   color: #fff;
@@ -87,7 +87,7 @@ button {
   margin-top: 20px;
 }
 
-button:hover {
+.btn-restart:hover {
   background-color: #0056b3;
 }
 
