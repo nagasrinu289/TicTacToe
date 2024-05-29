@@ -19,7 +19,7 @@ const OnlineMode = () => {
         if(username.trim() === ""){
             return
         }
-        const newSocket = io('http://localhost:3000' || import.meta.env.VITE_SOCKET_URL, {
+        const newSocket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:3000', {
             autoConnect: true
         });
         newSocket.emit('request_to_play', {
