@@ -14,10 +14,12 @@ const OnlineMode = () => {
 
 
     const handleClick = () => {
+        console.log(import.meta.env.VITE_SOCKET_URL);
+        console.log("hello")
         if(username.trim() === ""){
             return
         }
-        const newSocket = io('http://localhost:3000', {
+        const newSocket = io('http://localhost:3000' || import.meta.env.VITE_SOCKET_URL, {
             autoConnect: true
         });
         newSocket.emit('request_to_play', {
@@ -38,7 +40,7 @@ const OnlineMode = () => {
         // nav('/dashboard/online/game',{ state: { playerName: username, opponent: data.opponentName } });
     })
     if(start && opponent){
-        return <OnlineGame playerName={username} opponentName={opponent} playingAs={playingAs}/>
+        return <OnlineGame playerName={username} opponentName={opponent} playingAs={playingAs} socket={socket}/>
     }
     return (
         <div className="online-container">
