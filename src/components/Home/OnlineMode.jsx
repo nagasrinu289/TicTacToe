@@ -21,7 +21,7 @@ const OnlineMode = () => {
         if(username.trim() === ""){
             return
         }
-        const newSocket = io('http://localhost:3000', {
+        const newSocket = io('https://tic-tac-toe-ht76.vercel.app/', {
             autoConnect: true
         });
         newSocket.emit('request_to_play', {
