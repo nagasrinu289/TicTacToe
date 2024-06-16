@@ -11,15 +11,17 @@ const OnlineMode = () => {
     const [opponent,setOpponent] = useState("");
     const [start,setStart] = useState(false);
     const [playingAs,setPlayingAs] = useState(null);
+    const [waiting,setWaiting] = useState(false);
 
 
     const handleClick = () => {
+        setWaiting(true);
         console.log(import.meta.env.VITE_SOCKET_URL);
         console.log("hello")
         if(username.trim() === ""){
             return
         }
-        const newSocket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:3000', {
+        const newSocket = io('http://localhost:3000', {
             autoConnect: true
         });
         newSocket.emit('request_to_play', {
@@ -53,6 +55,7 @@ const OnlineMode = () => {
                 onChange={(e) => setUsername(e.target.value)}
             />
             <button onClick={handleClick}>Play</button>
+            {waiting? <p>Waiting for opponent</p>:null}
         </div>
     );
 }

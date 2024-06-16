@@ -123,18 +123,6 @@ server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-//hggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
-
-
-
-
-
-
-
-
-
-
-
 module.exports = (req, res) => {
   if (!res.socket.server.io) {
     res.socket.server.io = io;
